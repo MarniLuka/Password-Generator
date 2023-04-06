@@ -6,52 +6,59 @@ var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
 var upperCase = String(lowerCase).toUpperCase();
 var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialChar = ["~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "/", ".", "?", "<", ">"];
-var choice = [];
+var word = [];
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 // Had a heyday when I realized that alert and confirm were built in methods in JS cause I thought I had to make a box myself. Got stuck at first, so I viewed a tutorial to get me started and tried to do what I could by myself.
-function yourPrompts() {
-  charLength = prompt("How long do you want your password to be?");
-
-  if (charLength < 8 || charLength > 128) {
-    alert("Password has to be between 8 - 128 characters.");
-    return false;
-  }
-
-  if (confirm("Would you like lowercase letters in your password?")) {
-    choice = choice.concat(lowerCase);
-  }
-
-  if (confirm("Would you like uppercase letters in your password?")) {
-    choice = choice.concat(upperCase);
-  }
-
-  if (confirm("Would you like any numbers in your password?")) {
-    choice = choice.concat(numbers);
-  }
-
-  if (confirm("Would you like any special characters in your password?")) {
-    choice = choice.concat(specialChar);
-  }
-  return true;
-
-
 function generatePassword() {
 
   // 1. Prompt the user for the password criteria
   //    a. Password Lengnth 8 - 128
   //    b. Lowercase, uppercase, numbers, special characters
+
+  var charLength = prompt("How long do you want your password to be?");
+    if (charLength < 8 || charLength > 128) {
+      alert("Password must be between 8 - 128 characters.");
+    }
+
+  var lowLetters = confirm("Would you like lowercase letters in your password?");
+    if (lowLetters == true) {
+      word = word.concat(lowerCase);
+    }
+
+  var bigLetters = confirm("Would you like uppercase letters in your password?"); 
+    if (bigLetters == true) {
+      word = word.concat(upperCase);
+    }
+
+  var numerals = confirm("Would you like any numbers in your password?");
+    if (numerals == true) {
+      word = word.concat(numbers);
+    }
+
+  var characters = confirm("Would you like any special characters in your password?");
+    if (characters == true) {
+      word = word.concat(specialChar);
+    }
+
   // 2. Validate the input. At least one character type should be selected
+
+   if (!lowLetters && !bigLetters && !numerals && !characters) {
+    alert("You must choose at least one.")
+  }
+
   // 3. Generate password based on criteria
-
-
 
 
   // 4. Display password to the page
   return "Generated Password";
 }
+
+// if () {
+//   alert("You must choose one.")
+// }
 
 
 // Write password to the #password input
