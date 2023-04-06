@@ -1,12 +1,13 @@
 // Assignment code here
 
-// All the possible characters that can be in the password.
+// All the possible characters that can be in the password. 
 var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     // Instead of writing all the letters again, I converted the lowerCase into a string before using the .toUpperCase method. It turns out that you can't use .toUpperCase with an array which is why I had to convert it to a string first.
-var upperCase = String(lowerCase).toUpperCase();
+var upperCase = String(this.lowerCase).toUpperCase();
 var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialChar = ["~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "/", ".", "?", "<", ">"];
-var word = [];
+
+var word = [""];
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -18,9 +19,12 @@ function generatePassword() {
   //    a. Password Lengnth 8 - 128
   //    b. Lowercase, uppercase, numbers, special characters
 
-  var charLength = prompt("How long do you want your password to be?");
-    if (charLength < 8 || charLength > 128) {
+  var wordLength = prompt("How long do you want your password to be?");
+    if (wordLength < 8 || wordLength > 128) {
       alert("Password must be between 8 - 128 characters.");
+      return "Try again";
+    } else {
+      var length = wordLength
     }
 
   var lowLetters = confirm("Would you like lowercase letters in your password?");
@@ -45,20 +49,22 @@ function generatePassword() {
 
   // 2. Validate the input. At least one character type should be selected
 
-   if (!lowLetters && !bigLetters && !numerals && !characters) {
-    alert("You must choose at least one.")
+  if (!lowLetters && !bigLetters && !numerals && !characters) {
+    alert("You must choose at least one.");
+    return "Try again";
   }
 
   // 3. Generate password based on criteria
+  var password = [""]
 
+  for(var i = 0; i < length; i++) {
+    var random = Math.floor(Math.random() * word.length);
+    password += word[random];
+  }
 
   // 4. Display password to the page
-  return "Generated Password";
+  return password;
 }
-
-// if () {
-//   alert("You must choose one.")
-// }
 
 
 // Write password to the #password input
