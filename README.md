@@ -12,7 +12,7 @@ The password must be between 8 and 128 characters long. If it is shorter or long
 
 The series of prompts ask you if you would like lowercase letters, uppercase letters, numbers, and/or special characters in your password. You may chose to include as little or as many as you like, but you must chose one. If none are chosen, you cannot generate a password.
 
-[Password Generator]()
+[Password Generator](https://marniluka.github.io/Password-Generator/)
 ![Password Generator Screenshot](assets/images/Loadup%20Page.jpeg)
 
 ## Credits
